@@ -5,7 +5,7 @@ import LinkedList from '../src/linked_list'
 
 chai.use(chaiChange)
 
-describe('HashTable', () => {
+describe.skip('HashTable', () => {
   it('exists', () => {
     expect(HashTable).to.be.a('function')
   })

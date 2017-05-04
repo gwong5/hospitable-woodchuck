@@ -1,29 +1,90 @@
-// import chai, { expect } from 'chai'
-// import chaiChange from 'chai-change'
-// import HashTable from '../src/hash_table'
-// import LinkedList from '../src/linked_list'
+import chai, { expect } from 'chai'
+import chaiChange from 'chai-change'
+import HashTable from '../src/hash_table'
+import LinkedList from '../src/linked_list'
 
-// chai.use(chaiChange)
+chai.use(chaiChange)
 
-// describe('HashTable', () => {
-//   it('exists', () => {
-//     expect(HashTable).to.be.a('function')
-//   })
+describe.skip('HashTable', () => {
+  it('exists', () => {
+    expect(HashTable).to.be.a('function')
+  })
 
-//   context('put()', (key, value) => {
-//     it('putes an element to the top of the stack.', () => {
-//       const ht = new HashTable()
+  context('put(key, value)', () => {
+    it('adds a key value pair to the hash table, deal with collisions using chaining', () => {
+      const ht = new HashTable
+      ht.put("name", "Zanzibar")
+      ht.put("name", "Billy")
 
-//       expect(() => ht.put('foo', 'bar'))
-//         .to.alter(() => ht.length(), { from: 0, to: 1 })
-//     })
-//   })
-// })
+      expect(ht).to.eql( { data: { "name": "Zanzibar" }, next: { data: { "name": "Billy" }, next: null } } )
+    })
+  })
 
-// ht.put("name", "Zanzibar")  // adds a key-value pair to the hash table, deal with collisions using chaining
-// ht.get("name")              // returns the data associated with key.
-// ht.contains("name")         // returns true if the hash table contains the key.
-// ht.iterate((k, v) => console.log(`${k}: ${v}`)) // takes a callback function and passes it each key and value in sequence.
-// ht.remove("name")           // removes a key-value pair by key.
-// ht.size()                   // returns the number of key-value pairs in the hash table.
-// HashTable.hash("name")      // generates a hash for the key "name"
+  context('get(key)', () => {
+    it('returns the data associated with key', () => {
+      const ht = new HashTable
+      ht.put("name", "Billy")
+      ht.put("name", "Bob")
+
+      expect(ht.get("name")).to.eql(["Billy", "Bob"])
+    })
+  })
+
+  context('contains(key)', () => {
+    it('returns true if the hash table contains the key', () => {
+      const ht = new HashTable
+      ht.put("name", "Billy")
+      ht.put("name", "Bob")
+
+      expect(ht.contains("name")).to.be.true
+    })
+
+    it('returns false if the hash table does not contains the key', () => {
+      const ht = new HashTable
+      ht.put("name", "Billy")
+      ht.put("name", "Bob")
+
+      expect(ht.contains("poop")).to.be.false
+    })
+  })
+
+  context.skip('iterate(key, value)', () => {
+    it('takes a callback function and passes it to each key and value in sequence', () => {
+      const ht = new HashTable
+      ht.put("name", "Billy")
+      ht.put("name", "Bob")
+
+      expect(ht.iterate("name", "Bob")).to.be.null
+    })
+  })
+
+  context('remove(key)', () => {
+    it('removes a key value pair by key', () => {
+    const ht = new HashTable
+    ht.put("name", "Billy")
+    ht.put("name", "Bob")
+    ht.remove("name")
+
+    expect(ht).to.be.empty
+    })
+  })
+
+  context('size()', () => {
+    it('returns the number of key value pairs in the hash table', () => {
+    const ht = new HashTable
+    ht.put("name", "Billy")
+    ht.put("name", "Bob")
+
+    expect(ht.size()).to.eql(2)
+    })
+  })
+
+  context("hash(key)", () => {
+    it('generates a hash for the key', () => {
+      const ht = new HashTable
+      ht.hash("name")
+
+      expect(ht).to.eql({"name": null})
+    })
+  })
+})

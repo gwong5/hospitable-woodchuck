@@ -88,6 +88,7 @@ export default class LinkedList {
     } else {
       return null
     }
+    this._size++
   }
 
   insertAfter(node1, node2) {
@@ -113,6 +114,7 @@ export default class LinkedList {
     } else {
       return null
     }
+    this._size++
   }
 
   remove() {

@@ -164,7 +164,6 @@ describe('LinkedList', () => {
       linkedList.insert('potatoes')
       linkedList.insert('tomatoes')
       linkedList.insertAfter('potatoes','tomatoes')
-      console.log('insertafter: ', linkedList.head.next.next.next)
 
       expect(linkedList.head.next.next).to.eql({ data: 'potatoes', next: { data: 'tomatoes', next: { data: 'tomatoes', next: null} } })
     })

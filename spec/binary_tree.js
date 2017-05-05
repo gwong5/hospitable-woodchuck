@@ -24,7 +24,7 @@ describe('BinarySearchTree', () => {
       bst.insert(3)
       bst.insert(5)
     
-      expect(bst.search(5)).to.eql( { data: 5, next: null } )
+      expect(bst.search(5)).to.eql( { data: 5, left: null, right: null } )
     })
 
     it('returns null if node was not found', () => {
@@ -32,7 +32,7 @@ describe('BinarySearchTree', () => {
       bst.insert(3)
       bst.insert(5)
       
-      expect(bst.search(6)).to.be.false
+      expect(bst.search(6)).to.be.null
     })
   })
 
@@ -42,9 +42,9 @@ describe('BinarySearchTree', () => {
       bst.insert(3)
       bst.insert(2)
       bst.insert(1)
-      bst.remove(3)
+      bst.remove(7)
 
-      expect(bst.root).to.eql( { data: 2, next: { data: 1, next: null } } )
+      expect(bst.root).to.be.null
     })
   })
 

@@ -8,11 +8,12 @@ Base repository for the [Core Data Structures](http://jsdev.learnersguild.org/go
 
 run `npm install` and then `npm test`
 
-## Usage and Examples
-
-_...and this_
-
 ## Advanced Data Structures
+
+- [ ] Hash Table
+- [ ] Binary (Search) Tree
+- [x] Tree Node
+- [ ] Directed Graph
 
 ### Hash Table ( using a LinkedList for collision chaining )
 

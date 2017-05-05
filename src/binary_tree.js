@@ -15,7 +15,13 @@
 // bst.count()    // return the number of nodes in the tree.
 // ```
 
-import Node from './node'
+class Node {
+  constructor(data) {
+    this.data = data
+    this.left = null
+    this.right = null
+  }
+}
 
 export default class BinarySearchTree {
   constructor() {
@@ -29,33 +35,22 @@ export default class BinarySearchTree {
 
     if (!currentNode) {
       this.root = newNode
-    } else if (this._count === 1) {
-      if (currentNode.data < data) {
-        currentNode.next = newNode
-      } else {
-        newNode.next = currentNode
-        this.root = newNode
-      }
     } else {
-      if (currentNode.data >= data) {
-        newNode.next = currentNode
-        this.root = newNode
-        return
-      } else {
-        const prevNodes = new Node(currentNode.data)
-        while (currentNode.data <= data) {
-          if (!currentNode.next) {
-            currentNode.next = newNode
-            prevNodes.next = currentNode
+      let parent
+      while(parent = currentNode) {
+        if (data < currentNode.data) {
+          currentNode = currentNode.left
+          if (!currentNode) {
+            parent.left = newNode
             break
-          } else {
-            prevNodes.setNext(currentNode.data)
-            currentNode = currentNode.next
-            newNode.next = currentNode
-            prevNodes.next = newNode
+          }
+        } else {
+          currentNode = currentNode.right
+          if (!currentNode) {
+            parent.right = newNode
+            break
           }
         }
-        this.root = prevNodes
       }
     }
     this._count++

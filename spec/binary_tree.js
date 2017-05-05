@@ -13,8 +13,6 @@ describe('BinarySearchTree', () => {
       bst.insert(2)
       bst.insert(1)
       bst.insert(6)
-      bst.insert(7)
-      console.log('bst 4: ', bst.root)
       
       expect(bst.root).to.eql({ data: 2, left: { data: 1, left: null, right: null }, right: { data: 6, left: null, right: null } })
     })

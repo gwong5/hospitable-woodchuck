@@ -7,13 +7,13 @@ describe('BinarySearchTree', () => {
     expect(BinarySearchTree).to.be.a('function')
   })
 
-  context.skip('insert(node)', () => {
+  context.only('insert(node)', () => {
     it('inserts a node with the specified value into the tree', () => {
       const bst = new BinarySearchTree()
       bst.insert(2)
       bst.insert(1)
       bst.insert(1)
-      bst.insert(6)
+      // bst.insert(6)
       console.log('bst sort: ', bst.root)
 
       expect(bst.root).to.eql({ data: 3, next: null })

@@ -24,7 +24,7 @@ export default class BinarySearchTree {
   }
 
   insert(data) {
-    const newNode = new Node(data)
+    let newNode = new Node(data)
     let currentNode = this.root
 
     if (!currentNode) {
@@ -40,8 +40,9 @@ export default class BinarySearchTree {
       if (currentNode.data >= data) {
         newNode.next = currentNode
         this.root = newNode
+        return
       } else {
-        let prevNodes = new Node(currentNode.data)
+        const prevNodes = new Node(currentNode.data)
         while (currentNode.data <= data) {
           if (!currentNode.next) {
             currentNode.next = newNode

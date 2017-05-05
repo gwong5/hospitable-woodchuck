@@ -69,6 +69,7 @@ export default class LinkedList {
   insertBefore(node1, node2) {
     let newNode = new Node(node2)
     let currentNode = this.head
+    let prevNodes = new Node(currentNode.data)
     
     if (!currentNode.next) {
         newNode.next = (prevNodes = currentNode)
@@ -77,7 +78,6 @@ export default class LinkedList {
       const foundNode = this.find(node1)
 
       while (currentNode.next.data != node1) {
-        let prevNodes = new Node(currentNode.data)
         prevNodes.setNext(currentNode.data)
         currentNode = currentNode.next
       }

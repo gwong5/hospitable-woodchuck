@@ -2,8 +2,8 @@ import Node from './node'
 
 export default class LinkedList {
   constructor() {
-    this._size = 0
     this.head = null
+    this._size = 0
   }
 
   getHeadNode() {
@@ -50,14 +50,13 @@ export default class LinkedList {
     let currentNode = this.head
     if (!currentNode) {
       this.head = newNode
-      this._size++
     } else {
       while (currentNode.next) {
         currentNode = currentNode.next
       }
       currentNode.next = newNode
-      this._size++
     }
+    this._size++
   }
 
   insertFirst(data) {
@@ -70,7 +69,6 @@ export default class LinkedList {
   insertBefore(node1, node2) {
     let newNode = new Node(node2)
     let currentNode = this.head
-    let prevNodes = new Node(currentNode.data)
     
     if (!currentNode.next) {
         newNode.next = (prevNodes = currentNode)
@@ -79,7 +77,8 @@ export default class LinkedList {
       const foundNode = this.find(node1)
 
       while (currentNode.next.data != node1) {
-        prevNodes.setNext(new Node(currentNode.data))
+        let prevNodes = new Node(currentNode.data)
+        prevNodes.setNext(currentNode.data)
         currentNode = currentNode.next
       }
       newNode.next = foundNode

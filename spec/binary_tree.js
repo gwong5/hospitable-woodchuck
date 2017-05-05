@@ -1,18 +1,22 @@
 import chai, { expect } from 'chai'
 import chaiChange from 'chai-change'
-import BinaryTree from '../src/binary_tree'
+import BinarySearchTree from '../src/binary_tree'
 
-describe.skip('BinaryTree', () => {
+describe('BinarySearchTree', () => {
   it('is a function', () => {
-    expect(BinaryTree).to.be.a('function')
+    expect(BinarySearchTree).to.be.a('function')
   })
 
-  context('insert(node)', () => {
+  context.skip('insert(node)', () => {
     it('inserts a node with the specified value into the tree', () => {
       const bst = new BinarySearchTree()
-      bst.insert(3)
+      bst.insert(2)
+      bst.insert(1)
+      bst.insert(1)
+      bst.insert(6)
+      console.log('bst sort: ', bst.root)
 
-      expect(bst).to.eql({ data: 3, next: null })
+      expect(bst.root).to.eql({ data: 3, next: null })
     })
   })
 
@@ -42,7 +46,7 @@ describe.skip('BinaryTree', () => {
       bst.insert(1)
       bst.remove(3)
 
-      expect(bst).to.eql( { data: 2, next: { data: 1, next: null } } )
+      expect(bst.root).to.eql( { data: 2, next: { data: 1, next: null } } )
     })
   })
 
